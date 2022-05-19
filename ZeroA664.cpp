@@ -2,7 +2,6 @@
 #define MAX 8000
 using namespace std;
 
-void inToPostfix(char*, char*); // 中序轉後序
 int priority(char); // 運算子優先權
 long long solve(char*);
 long long calPostfix(long long,long long ,char);
@@ -14,7 +13,7 @@ int main(void) {
     string owo;
 
     cin>>times;
-    getline(cin,owo);
+    getline(cin,owo);  //讓換行字元流產
 
     while(times--){
         cin>>infix;
@@ -54,7 +53,7 @@ long long calPostfix(long long owo1,long long owo2,char ope){
 
 }
 
-//流程是?   有四種狀態，integer 、 '('  、  ')' 或是 +-*/
+//流程是有四種狀態，integer 、 '('  、  ')' 或是 +-*/
 // 其中加減乘除若左邊大於右邊優先度就可以做計算，持續狀態有operator.top != '(' and  !operator.empty()
 //and  priority(operator.top) >= priority (currentOperator)
 
@@ -114,7 +113,7 @@ long long solve(char *infix){
             }
         }
     }
-    if(isnum==1){
+    if(isnum==1){          //要check最後還有沒有數字 uwu
         operand.push(num);
     }
 
@@ -132,4 +131,3 @@ long long solve(char *infix){
     long long returnowo=operand.top();
     return returnowo;
 }
-
